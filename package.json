@@ -1,6 +1,5 @@
 {
     "name"         : "node-red-bluemix",
-    "version"      : "0.5.1",
     "dependencies": {
         "when": "~3.x",
         "mongodb": "~1.4.x",
@@ -8,20 +7,24 @@
         "cfenv":"~1.0.0",
         "feedparser":"~0.19.2",
         "redis":"~0.10.1",
-        "node-red": "0.x",
-        "node-red-bluemix-nodes":"1.x",
-        "node-red-node-watson":"0.x",
-        "node-red-node-openwhisk":"0.x",
+        "node-red": "0.14.4",
+        "node-red-bluemix-nodes":"0.x",
         "node-red-node-cf-cloudant":"0.x",
         "node-red-contrib-scx-ibmiotapp":"0.x",
         "node-red-contrib-ibmpush":"0.x",
         "node-red-contrib-bluemix-hdfs":"0.x",
-        "node-red-nodes-cf-sqldb-dashdb":"0.x"
-    },
-    "scripts": {
-        "start": "node --max-old-space-size=384 node_modules/node-red/red.js --settings ./bluemix-settings.js -v"
+        "node-red-contrib-freeboard":"git://github.com/tfatykhov/node-red-contrib-freeboard.git",
+        "node-red-node-pushbullet":"0.x",
+        "node-red-contrib-later":"~0.x",
+        "node-red-contrib-async":"~0.x",
+        "node-red-contrib-github":"~0.x",
+        "suncalc":"git://github.com/mourner/suncalc.git",
+        "node-red-contrib-ui":"~1.X",
+        "winknodered":"git://github.com/tfatykhov/WinkRedNode.git#master",
+ 	"tinycolor2":"git://github.com/bgrins/TinyColor.git" ,
+	"wnr-ui" : "git://github.com/tfatykhov/wnrUI.git" 
     },
     "engines": {
-        "node": "4.x"
+        "node": "~4.x"
     }
 }
