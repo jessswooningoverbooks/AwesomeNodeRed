@@ -1,5 +1,5 @@
 /**
- * Copyright 2014, 2016 IBM Corp.
+ * Copyright 2014 IBM Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-
+// !!!!DO NOT CHANHGE ANYTHING BELOW THIS LINE!!!
 var path = require("path");
 var when = require("when");
 
@@ -24,7 +24,7 @@ var VCAP_APPLICATION = JSON.parse(process.env.VCAP_APPLICATION);
 var VCAP_SERVICES = JSON.parse(process.env.VCAP_SERVICES);
 
 var settings = module.exports = {
-    uiPort: process.env.PORT || 1880,
+    uiPort: process.env.VCAP_APP_PORT || 1880,
     mqttReconnectTime: 15000,
     serialReconnectTime: 15000,
     debugMaxLength: 1000,
@@ -48,9 +48,17 @@ var settings = module.exports = {
 
     // Serve up the welcome page
     httpStatic: path.join(__dirname,"public"),
-
-    functionGlobalContext: { },
-
+   // !!!!Please put your settingx instead of XXX in the section below and remove comments if you use that api (remove //) !!!
+   functionGlobalContext: {
+    WinkUser: {"uid":"jessswooningoverbooks","pwd":"Fal2co@n"} //please put your actual wink user id and password repacing XXXX
+    ,BlueMixUrlBase: "https://AwesomeNodeRed.mybluemix.net" //please put your node-red app name that you created in prior steps
+    ,VCAP_SERVICES: JSON.parse(process.env.VCAP_SERVICES)
+    ,CRYPTO: require("crypto")
+    ,SunCalc : require("suncalc")
+    ,wnr : require("winknodered") 
+    ,tinycolor : require("tinycolor2")   
+ },    
+// !!!!DO NOT CHANHGE ANYTHING BELOW THIS LINE!!!
     storageModule: require("./couchstorage")
 }
 
@@ -75,7 +83,7 @@ if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
     }
 }
 
-settings.couchAppname = process.env.NODE_RED_APPLICATION_NAME || VCAP_APPLICATION['application_name'];
+settings.couchAppname = VCAP_APPLICATION['application_name'];
 
 
 var storageServiceName = process.env.NODE_RED_STORAGE_NAME || new RegExp("^"+settings.couchAppname+".cloudantNoSQLDB");
@@ -87,5 +95,6 @@ if (!couchService) {
         console.log(" - using NODE_RED_STORAGE_NAME environment variable: "+process.env.NODE_RED_STORAGE_NAME);
     }
     throw new Error("No cloudant service found");
-}
+}    
 settings.couchUrl = couchService.credentials.url;
+
