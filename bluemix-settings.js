@@ -50,7 +50,7 @@ var settings = module.exports = {
     httpStatic: path.join(__dirname,"public"),
    // !!!!Please put your settingx instead of XXX in the section below and remove comments if you use that api (remove //) !!!
    functionGlobalContext: {
-    WinkUser: {"uid":"jessswooningoverbooks@gmail.com","pwd":"Fal2co@n"} //please put your actual wink user id and password repacing XXXX
+    WinkUser: {"uid":"jessswooningoverbooks","pwd":"Fal2co@n"} //please put your actual wink user id and password repacing XXXX
     ,BlueMixUrlBase: "https://AwesomeNodeRed.mybluemix.net" //please put your node-red app name that you created in prior steps
     ,VCAP_SERVICES: JSON.parse(process.env.VCAP_SERVICES)
     ,CRYPTO: require("crypto")
